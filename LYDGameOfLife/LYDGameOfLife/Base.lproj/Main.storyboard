@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AO1-8x-Bhe">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Game Of Life-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LYDGameOfLife" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vDJ-HW-g7A">
+                                <rect key="frame" x="20" y="194" width="374" height="369"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KrQ-F9-qCI">
+                                    <size key="itemSize" width="35" height="35"/>
+                                    <size key="estimatedItemSize" width="35" height="35"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" reuseIdentifier="Cell" id="ni9-zx-X1s" customClass="CollectionViewCell" customModule="LYDGameOfLife" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="VXz-hy-jD9">
+                                            <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bi-Uy-Nf0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <connections>
+                                                        <action selector="buttonTapped:" destination="ni9-zx-X1s" eventType="touchUpInside" id="XCG-Xl-C5n"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="3bi-Uy-Nf0" firstAttribute="leading" secondItem="VXz-hy-jD9" secondAttribute="leading" id="K8l-Wr-lPs"/>
+                                                <constraint firstAttribute="bottom" secondItem="3bi-Uy-Nf0" secondAttribute="bottom" id="UFm-Aq-hmr"/>
+                                                <constraint firstItem="3bi-Uy-Nf0" firstAttribute="top" secondItem="VXz-hy-jD9" secondAttribute="top" id="Uqp-au-dLQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="3bi-Uy-Nf0" secondAttribute="trailing" id="spU-Ub-msc"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <size key="customSize" width="35" height="35"/>
+                                        <connections>
+                                            <outlet property="button" destination="3bi-Uy-Nf0" id="p1N-48-Esc"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8X-w0-842">
+                                <rect key="frame" x="132" y="766" width="150" height="50"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="pi6-82-Etl"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="t1E-4l-XTc"/>
+                                </constraints>
+                                <state key="normal" title="Reset">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o5Y-SO-fPW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w06-CC-nMm">
+                                <rect key="frame" x="57" y="641" width="300" height="100"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="RZ7-Xj-j3c"/>
+                                    <constraint firstAttribute="height" constant="100" id="pmi-DZ-3Cw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="60"/>
+                                <state key="normal" title="start">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="startTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="syY-ux-KJT"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IkG-FR-Vxs">
+                                <rect key="frame" x="105" y="121" width="204" height="41"/>
+                                <string key="text">Tap on cells to make them 
+alive and click start!</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="w06-CC-nMm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0cg-1w-hhF"/>
+                            <constraint firstAttribute="bottom" secondItem="w06-CC-nMm" secondAttribute="bottom" constant="155" id="2UF-KO-Uh5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vDJ-HW-g7A" secondAttribute="trailing" constant="20" id="4fe-Y5-JLC"/>
+                            <constraint firstItem="w06-CC-nMm" firstAttribute="centerX" secondItem="V8X-w0-842" secondAttribute="centerX" id="Huq-61-re6"/>
+                            <constraint firstItem="IkG-FR-Vxs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="33" id="JM8-MY-VZg"/>
+                            <constraint firstItem="vDJ-HW-g7A" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="106" id="Tpo-wA-mIu"/>
+                            <constraint firstItem="V8X-w0-842" firstAttribute="top" secondItem="w06-CC-nMm" secondAttribute="bottom" constant="25" id="djf-5i-ewk"/>
+                            <constraint firstItem="vDJ-HW-g7A" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ow6-01-k4L"/>
+                            <constraint firstItem="IkG-FR-Vxs" firstAttribute="centerX" secondItem="vDJ-HW-g7A" secondAttribute="centerX" id="pFI-zu-Rwa"/>
+                            <constraint firstItem="w06-CC-nMm" firstAttribute="top" secondItem="vDJ-HW-g7A" secondAttribute="bottom" constant="78" id="woe-av-mQV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Game Of Life" id="qkF-SY-ESP">
+                        <barButtonItem key="rightBarButtonItem" image="info.circle" catalog="system" id="Zyd-ex-XXe">
+                            <connections>
+                                <segue destination="HlM-5R-aL6" kind="show" identifier="InfoSegue" id="odX-dQ-Zs9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="collectionView" destination="vDJ-HW-g7A" id="Bez-M9-M85"/>
+                        <outlet property="startButton" destination="w06-CC-nMm" id="1x6-bK-bkV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="129.91071428571428"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="iJY-3V-fpd">
+            <objects>
+                <viewController id="HlM-5R-aL6" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iVm-oM-g1J">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rules:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lb4-69-GbQ">
+                                <rect key="frame" x="20" y="160" width="78" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="s25-0R-Dvf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- A cell needs 3 nearby alive cells to be alive/stay alive" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGS-6R-LbW">
+                                <rect key="frame" x="20" y="204" width="374" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- A cell needs 2 nearby alive cells to stay unchanged" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Rc-cE-hsp">
+                                <rect key="frame" x="20" y="260" width="374" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- A cell dies under other conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="poN-Et-bjy">
+                                <rect key="frame" x="20" y="316" width="374" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Algorithm:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ojb-qw-9pS">
+                                <rect key="frame" x="20" y="360" width="130" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="UJg-2R-VTG">
+                                <rect key="frame" x="20" y="406" width="374" height="407"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <mutableString key="text">      Using the postion differences between cells in a 2D array to find out a cells' nearby cells. From these infomation we can determinate whether it should be alived or dead by checking how many nearby cells around it is alive.       The game idea was originally devised by a scientist called John Conway, using math knowledge to demostrate cellular automation. Then later on the algorithm behind it becomes an interesting computer science problem.</mutableString>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Ojb-qw-9pS" firstAttribute="leading" secondItem="o2l-tg-M7F" secondAttribute="leading" constant="20" id="1N0-9V-t4X"/>
+                            <constraint firstItem="UJg-2R-VTG" firstAttribute="top" secondItem="Ojb-qw-9pS" secondAttribute="bottom" constant="10" id="3Wg-GH-OXd"/>
+                            <constraint firstItem="poN-Et-bjy" firstAttribute="top" secondItem="4Rc-cE-hsp" secondAttribute="bottom" constant="8" id="5I7-1e-R5G"/>
+                            <constraint firstItem="o2l-tg-M7F" firstAttribute="trailing" secondItem="rGS-6R-LbW" secondAttribute="trailing" constant="20" id="7u0-by-19Y"/>
+                            <constraint firstItem="UJg-2R-VTG" firstAttribute="leading" secondItem="o2l-tg-M7F" secondAttribute="leading" constant="20" id="9R3-lM-yVw"/>
+                            <constraint firstItem="o2l-tg-M7F" firstAttribute="bottom" secondItem="UJg-2R-VTG" secondAttribute="bottom" id="FvO-bs-uEa"/>
+                            <constraint firstItem="o2l-tg-M7F" firstAttribute="trailing" secondItem="poN-Et-bjy" secondAttribute="trailing" constant="20" id="K6w-aQ-j8G"/>
+                            <constraint firstItem="o2l-tg-M7F" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Lb4-69-GbQ" secondAttribute="trailing" symbolic="YES" id="LKT-qe-bmX"/>
+                            <constraint firstItem="Ojb-qw-9pS" firstAttribute="top" secondItem="poN-Et-bjy" secondAttribute="bottom" constant="20" id="UDk-OY-mcX"/>
+                            <constraint firstItem="rGS-6R-LbW" firstAttribute="top" secondItem="Lb4-69-GbQ" secondAttribute="bottom" constant="8" id="V12-5T-paO"/>
+                            <constraint firstItem="Lb4-69-GbQ" firstAttribute="top" secondItem="o2l-tg-M7F" secondAttribute="top" constant="20" id="WTE-5u-9y9"/>
+                            <constraint firstItem="4Rc-cE-hsp" firstAttribute="leading" secondItem="o2l-tg-M7F" secondAttribute="leading" constant="20" id="WfA-Fc-uMR"/>
+                            <constraint firstItem="poN-Et-bjy" firstAttribute="leading" secondItem="o2l-tg-M7F" secondAttribute="leading" constant="20" id="YFF-sr-bDU"/>
+                            <constraint firstItem="o2l-tg-M7F" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ojb-qw-9pS" secondAttribute="trailing" symbolic="YES" id="a1f-35-eMb"/>
+                            <constraint firstItem="o2l-tg-M7F" firstAttribute="trailing" secondItem="4Rc-cE-hsp" secondAttribute="trailing" constant="20" id="ci8-GF-Rb1"/>
+                            <constraint firstItem="Lb4-69-GbQ" firstAttribute="leading" secondItem="o2l-tg-M7F" secondAttribute="leading" constant="20" id="mQL-F4-5YB"/>
+                            <constraint firstItem="rGS-6R-LbW" firstAttribute="leading" secondItem="o2l-tg-M7F" secondAttribute="leading" constant="20" id="qij-w2-Vre"/>
+                            <constraint firstItem="4Rc-cE-hsp" firstAttribute="top" secondItem="rGS-6R-LbW" secondAttribute="bottom" constant="8" id="x3U-Nt-7zD"/>
+                            <constraint firstItem="o2l-tg-M7F" firstAttribute="trailing" secondItem="UJg-2R-VTG" secondAttribute="trailing" constant="20" id="yUT-NR-A0m"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="o2l-tg-M7F"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="About" id="um0-l4-GLG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AFQ-jk-3XH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1940.5797101449277" y="133.92857142857142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1Qe-pQ-UhU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AO1-8x-Bhe" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="mKz-5X-vIO">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="A87-bH-x6H"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XH2-ze-PWK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="info.circle" catalog="system" width="64" height="60"/>
+    </resources>
+</document>
